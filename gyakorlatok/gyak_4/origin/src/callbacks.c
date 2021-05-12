@@ -43,7 +43,7 @@ void reshape(GLsizei width, GLsizei height)
 
 void motion(int x, int y)
 {
-    rotate_camera(&camera, x, y);
+    //rotate_camera(&camera, x, y);
     glutPostRedisplay();
 }
 
@@ -72,6 +72,12 @@ void keyboard(unsigned char key, int x, int y)
     case 'e':
         set_camera_vertical_speed(&camera, -speed);
         break;
+	case 'j':
+        set_camera_rotation_speed(&camera, speed*50);
+        break;
+    case 'l':
+        set_camera_rotation_speed(&camera, -speed*50);
+        break;
     }
 
     glutPostRedisplay();
@@ -93,6 +99,10 @@ void keyboard_up(unsigned char key, int x, int y)
 	case 'e':
     case 'q':
         set_camera_vertical_speed(&camera, 0.0);
+        break;
+	case 'j':
+    case 'l':
+        set_camera_rotation_speed(&camera, 0.0);
         break;
     }
 
