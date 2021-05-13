@@ -92,138 +92,20 @@ void draw_scene(const Scene* scene)
 
     //set_material(&(scene->material));
     set_lighting();
-    //draw_model(&(scene->cube));
-    /*
-    glPushMatrix();
-    glBindTexture(GL_TEXTURE_2D, scene->hare_texture_id);
-    glTranslatef(2,0,0);
-    glScalef(0.2,0.2,0.2);
-    draw_model(&(scene->hare));
-    glPopMatrix();
 
-    glPushMatrix();
-    glBindTexture(GL_TEXTURE_2D, scene->raptor_texture_id);
-    draw_model(&(scene->raptor));
-    glPopMatrix();
+	//draw grid
 
-    glPushMatrix();
-    glBegin(GL_QUADS);
-    glTranslatef(0,-2,0);
+	float step_y = 1.5*2;
+	float step_x = sqrt(3)*2;
+	float i;
+	float k;
+	for(k = -5; k<=5;k++){
+		for(i = -5; i <=5; i++){
+			draw_hexas(k*step_x,i*step_y);
+		}
+	}
+	
 
-    glTexCoord2f(0,0);
-    glVertex3f(0, 0, 0);
-
-    glTexCoord2f(fabs(sin(scene->w)),0);
-    glVertex3f(1, 0, 0);
-
-    glTexCoord2f(1, fabs(sin(scene->w)));
-    glVertex3f(1, 1, 0);
-
-    glTexCoord2f(0,1);
-    glVertex3f(0, 1, 0);
-
-
-    glEnd();
-    glPopMatrix();
-    */
-    float i;
-    float p;
-    float s;
-/*
-    glBegin(GL_POLYGON);
-    glColor3f(0.3, 0.3, 0.3);
-    for (i = 0; i < 6; ++i) {
-        glVertex2d(sin(i/6.0*2*M_PI),
-                   cos(i/6.0*2*M_PI));
-        // printf("%lf - %lf\n",sin(i/6.0*2*M_PI),cos(i/6.0*2*M_PI));
-
-    }
-    //printf("\n");
-    glEnd();
-	*/
-    glBegin(GL_LINES);
-    glColor3f(1, 0, 0);
-    for (i = 0; i < 6; ++i) {
-        glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
-        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
-    }
-    glEnd();
-	
-	glPushMatrix();
-	glTranslatef(sqrt(3)/2*2, 0, 0);
-	glBegin(GL_LINES);
-    glColor3f(0, 1, 0);
-    for (i = 0; i < 6; ++i) {
-        glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
-        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
-    }
-    glEnd();
-	
-	
-	glPopMatrix();
-	
-	glPushMatrix();
-	glTranslatef(-sqrt(3)/2*2, 0, 0);
-	glBegin(GL_LINES);
-    glColor3f(0, 0, 1);
-    for (i = 0; i < 6; ++i) {
-        glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
-        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
-    }
-    glEnd();
-	glPopMatrix();
-	
-	
-	
-	glPushMatrix();
-	glTranslatef(sqrt(3)/2, 1.5, 0);
-	glBegin(GL_LINES);
-    glColor3f(1, 1, 1);
-    for (i = 0; i < 6; ++i) {
-        glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
-        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
-    }
-    glEnd();
-	glPopMatrix();
-	
-	glPushMatrix();
-	glTranslatef(sqrt(3)/2, -1.5, 0);
-	glBegin(GL_LINES);
-    glColor3f(1, 1, 1);
-    for (i = 0; i < 6; ++i) {
-        glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
-        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
-    }
-    glEnd();
-	glPopMatrix();
-	
-	glPushMatrix();
-	glTranslatef(-sqrt(3)/2, -1.5, 0);
-	glBegin(GL_LINES);
-    glColor3f(1, 1, 1);
-    for (i = 0; i < 6; ++i) {
-        glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
-        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
-    }
-    glEnd();
-	glPopMatrix();
-	
-	glPushMatrix();
-	glTranslatef(-sqrt(3)/2, 1.5, 0);
-	glBegin(GL_LINES);
-    glColor3f(1, 1, 1);
-    for (i = 0; i < 6; ++i) {
-        glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
-        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
-    }
-    glEnd();
-	glPopMatrix();
-	
-    //glBegin(GL_LINES);
-    // glColor3f(0, 0, 0);
-    //glVertex3f(0, 0, 0);
-    //glVertex3f(sin(1/6.0*2*M_PI), cos(1/6.0*2*M_PI), 0);
-    //glEnd();
 }
 
 void draw_origin()
@@ -244,4 +126,97 @@ void draw_origin()
     glVertex3f(0, 0, 1);
 
     glEnd();
+}
+
+void draw_hexas(float x, float y){
+	
+	float i;
+	glPushMatrix();
+	glTranslatef(x,y,0);
+	
+	//1
+	glPushMatrix();
+	
+	glTranslatef(sqrt(3)/2*2, 0, 0);
+	
+	glBegin(GL_LINES);
+    glColor3f(0, 1, 0);
+    for (i = 0; i < 6; ++i) {
+        glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
+        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
+    }
+    glEnd();
+	glPopMatrix();
+	
+	//2
+	glPushMatrix();
+	
+	glTranslatef(sqrt(3)/2, 1.5, 0);
+	
+	glBegin(GL_LINES);
+    glColor3f(1, 1, 1);
+    for (i = 0; i < 6; ++i) {
+        glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
+        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
+    }
+    glEnd();
+	glPopMatrix();
+	
+	//3
+	glPushMatrix();
+	
+	glTranslatef(-sqrt(3)/2, 1.5, 0);
+	
+	glBegin(GL_LINES);
+    glColor3f(1, 1, 1);
+    for (i = 0; i < 6; ++i) {
+        glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
+        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
+    }
+    glEnd();
+	glPopMatrix();
+	
+	//4
+	glPushMatrix();
+	
+	glTranslatef(-sqrt(3)/2*2, 0, 0);
+	
+	glBegin(GL_LINES);
+    glColor3f(0, 0, 1);
+    for (i = 0; i < 6; ++i) {
+        glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
+        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
+    }
+    glEnd();
+	glPopMatrix();
+	
+	//5
+	glPushMatrix();
+	
+	glTranslatef(-sqrt(3)/2, -1.5, 0);
+	
+	glBegin(GL_LINES);
+    glColor3f(1, 1, 1);
+    for (i = 0; i < 6; ++i) {
+        glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
+        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
+    }
+    glEnd();
+	glPopMatrix();
+	
+	//6
+	glPushMatrix();
+	
+	glTranslatef(sqrt(3)/2, -1.5, 0);
+
+	glBegin(GL_LINES);
+    glColor3f(1, 1, 1);
+    for (i = 0; i < 6; ++i) {
+        glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
+        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
+    }
+    glEnd();
+	glPopMatrix();
+	glPopMatrix();
+	
 }

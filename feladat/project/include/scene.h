@@ -41,6 +41,12 @@ void set_material(const Material* material);
  */
 void draw_scene(const Scene* scene);
 
+
+/**
+ * Draw hexas around x, y
+ */
+void draw_hexas(float x, float y);
+
 /**
  * Draw the origin of the world coordinate system.
  */
