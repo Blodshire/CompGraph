@@ -20,7 +20,7 @@ void init_scene(Scene* scene)
 
     load_model(&(scene->raptor), "raptor.obj");
     scene->raptor_texture_id = load_texture("raptor.png");
-*/
+    */
     scene->material.ambient.red = 1.0;
     scene->material.ambient.green = 1.0;
     scene->material.ambient.blue = 1.0;
@@ -34,7 +34,7 @@ void init_scene(Scene* scene)
     scene->material.specular.blue = 0.0;
 
     scene->material.shininess = 0.0;
-    
+
 }
 
 void update_scene(Scene* scene, double time) {
@@ -85,15 +85,15 @@ void set_material(const Material* material)
 
 void draw_scene(const Scene* scene)
 {
-    
-    
+
+
     draw_origin();
-	
-	
-	set_material(&(scene->material));
+
+
+    //set_material(&(scene->material));
     set_lighting();
     //draw_model(&(scene->cube));
-	/*
+    /*
     glPushMatrix();
     glBindTexture(GL_TEXTURE_2D, scene->hare_texture_id);
     glTranslatef(2,0,0);
@@ -126,20 +126,33 @@ void draw_scene(const Scene* scene)
     glEnd();
     glPopMatrix();
     */
-	float i;
-	float p;
-	for(p = 0; p< 4; p+=2){
-	glPushMatrix();
-	glTranslatef(sqrt(3)/2*p,0,0);
+    float i;
+    float p;
+    float s;
+
     glBegin(GL_POLYGON);
+    glColor3f(0.3, 0.3, 0.3);
     for (i = 0; i < 6; ++i) {
         glVertex2d(sin(i/6.0*2*M_PI),
                    cos(i/6.0*2*M_PI));
+        // printf("%lf - %lf\n",sin(i/6.0*2*M_PI),cos(i/6.0*2*M_PI));
+
     }
-    glEnd();                            
-	glPopMatrix();
-	
-	}
+    //printf("\n");
+    glEnd();
+    glBegin(GL_LINES);
+    glColor3f(1, 1, 1);
+    for (i = 0; i < 6; ++i) {
+        glVertex3f(0, 0, 0);
+        glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
+    }
+    glEnd();
+
+    //glBegin(GL_LINES);
+    // glColor3f(0, 0, 0);
+    //glVertex3f(0, 0, 0);
+    //glVertex3f(sin(1/6.0*2*M_PI), cos(1/6.0*2*M_PI), 0);
+    //glEnd();
 }
 
 void draw_origin()
