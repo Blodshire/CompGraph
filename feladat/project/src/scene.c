@@ -8,45 +8,45 @@
 
 void init_scene(Scene* scene)
 {
-	scene->w=0;
-	/*
-     
+    scene->w=0;
+    /*
+
 
     glBindTexture(GL_TEXTURE_2D, scene->texture_id);
-	*/
-	/*
-	load_model(&(scene->hare), "hare.obj");
-    scene->hare_texture_id = load_texture("hare.jpg"); 
-	
-	load_model(&(scene->raptor), "raptor.obj");
+    */
+    /*
+    load_model(&(scene->hare), "hare.obj");
+    scene->hare_texture_id = load_texture("hare.jpg");
+
+    load_model(&(scene->raptor), "raptor.obj");
     scene->raptor_texture_id = load_texture("raptor.png");
-	
-    scene->material.ambient.red = 1.0;
-    scene->material.ambient.green = 1.0;
-    scene->material.ambient.blue = 1.0;
+*/
+    scene->material.ambient.red = 0.0;
+    scene->material.ambient.green = 0.0;
+    scene->material.ambient.blue = 0.0;
 
-    scene->material.diffuse.red = 1.0;
+    scene->material.diffuse.red = 0.0;
     scene->material.diffuse.green = 1.0;
-    scene->material.diffuse.blue = 1.0;
+    scene->material.diffuse.blue = 0.0;
 
-    scene->material.specular.red = 1.0;
-    scene->material.specular.green = 1.0;
-    scene->material.specular.blue = 1.0;
+    scene->material.specular.red = 0.0;
+    scene->material.specular.green = 0.0;
+    scene->material.specular.blue = 0.0;
 
     scene->material.shininess = 0.0;
-	*/
+    
 }
 
-void update_scene(Scene* scene, double time){
-	 scene->w +=time;
+void update_scene(Scene* scene, double time) {
+    scene->w +=time;
 }
 
 void set_lighting()
 {
-	
-    float ambient_light[] = { 1f, 1f,1f, 1.0f };
-    float diffuse_light[] = { 1f, 1f, 1, 1.0f };
-    float specular_light[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+
+    float ambient_light[] = { 1.0f, 1.0f,1.0f, 1.0f };
+    float diffuse_light[] = { 1.0f, 1.0f, 1.0, 1.0f };
+    float specular_light[] = { 0.0f, 0.0f, 0.0f, 1.0f };
     float position[] = { 0.0f, 0.0f, 10.0f, 1.0f };
 
     glLightfv(GL_LIGHT0, GL_AMBIENT, ambient_light);
@@ -85,44 +85,51 @@ void set_material(const Material* material)
 
 void draw_scene(const Scene* scene)
 {
-	/*
+    /*
     set_material(&(scene->material));
     set_lighting();
     draw_origin();
     //draw_model(&(scene->cube));
-	
-	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D, scene->hare_texture_id);
-	glTranslatef(2,0,0);
-	glScalef(0.2,0.2,0.2);
-	draw_model(&(scene->hare));
-	glPopMatrix();
-	
-	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D, scene->raptor_texture_id);
-	draw_model(&(scene->raptor));
-	glPopMatrix();
-	
-	glPushMatrix();
-	glBegin(GL_QUADS);
-	glTranslatef(0,-2,0);
-	
-	glTexCoord2f(0,0);
-	glVertex3f(0, 0, 0);
-	
-	glTexCoord2f(fabs(sin(scene->w)),0);
-	glVertex3f(1, 0, 0);
-	
-	glTexCoord2f(1, fabs(sin(scene->w)));
-	glVertex3f(1, 1, 0);
-	
-	glTexCoord2f(0,1);
-	glVertex3f(0, 1, 0);
-	
-	
-	glEnd();
-	glPopMatrix();
-	*/
+
+    glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, scene->hare_texture_id);
+    glTranslatef(2,0,0);
+    glScalef(0.2,0.2,0.2);
+    draw_model(&(scene->hare));
+    glPopMatrix();
+
+    glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, scene->raptor_texture_id);
+    draw_model(&(scene->raptor));
+    glPopMatrix();
+
+    glPushMatrix();
+    glBegin(GL_QUADS);
+    glTranslatef(0,-2,0);
+
+    glTexCoord2f(0,0);
+    glVertex3f(0, 0, 0);
+
+    glTexCoord2f(fabs(sin(scene->w)),0);
+    glVertex3f(1, 0, 0);
+
+    glTexCoord2f(1, fabs(sin(scene->w)));
+    glVertex3f(1, 1, 0);
+
+    glTexCoord2f(0,1);
+    glVertex3f(0, 1, 0);
+
+
+    glEnd();
+    glPopMatrix();
+    */
+	int i;
+    glBegin(GL_POLYGON);
+    for (i = 0; i < 6; ++i) {
+        glVertex2d(sin(i/6.0*2*M_PI),
+                   cos(i/6.0*2*M_PI));
+    }
+    glEnd();
 
 }
 
