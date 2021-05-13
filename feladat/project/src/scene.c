@@ -8,6 +8,7 @@
 
 void init_scene(Scene* scene)
 {
+	
     scene->w=0;
     /*
 
@@ -34,6 +35,7 @@ void init_scene(Scene* scene)
     scene->material.specular.blue = 0.0;
 
     scene->material.shininess = 0.0;
+	
 
 }
 
@@ -85,10 +87,12 @@ void set_material(const Material* material)
 
 void draw_scene(const Scene* scene)
 {
-
+	float[100][100] HexCentres;
+	
 
     //draw_origin();
-
+	 draw_hexas(0,0);
+	 float[0][0]=0;
 
     //set_material(&(scene->material));
     set_lighting();
@@ -97,6 +101,8 @@ void draw_scene(const Scene* scene)
 
 	float step_y = 1.5*2;
 	float step_x = sqrt(3)*2;
+	draw_hexas(0.25*step_x,0.5*step_y);
+	/*
 	float i;
 	float k;
 	for(k = -5; k<=5;k++){
@@ -104,7 +110,7 @@ void draw_scene(const Scene* scene)
 			draw_hexas(k*step_x,i*step_y);
 		}
 	}
-	
+	*/
 
 }
 
