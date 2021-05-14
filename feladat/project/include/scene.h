@@ -16,6 +16,9 @@ typedef struct Scene
 	double w;
 } Scene;
 
+
+
+
 /**
  * Initialize the scene by loading models.
  */

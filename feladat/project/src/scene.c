@@ -5,6 +5,7 @@
 #include <obj/load.h>
 #include <obj/draw.h>
 #include <math.h>
+#include <game.h>
 
 void init_scene(Scene* scene)
 {
@@ -38,6 +39,8 @@ void init_scene(Scene* scene)
 	
 
 }
+
+
 
 void update_scene(Scene* scene, double time) {
     scene->w +=time;

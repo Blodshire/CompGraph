@@ -50,4 +50,10 @@ void checkForValidSurround(float x, float y);
  * Checks valid surrounding tiles adjacency, if adjacency is correct, sets tile
  */
 void checkAndSetTile();
+
+ /**
+ * Randomizes current Tile's adjacency values
+ */
+void randomizeTile();
+
 #endif /* GAME_H */
