@@ -14,25 +14,25 @@ void init_scene(Scene* scene)
 
     glBindTexture(GL_TEXTURE_2D, scene->texture_id);
 	*/
-	load_model(&(scene->hare), "hare.obj");
-    scene->hare_texture_id = load_texture("hare.jpg"); 
+	load_model(&(scene->hare), "Toothpick_flag.obj");
+    scene->hare_texture_id = load_texture("hungary_text.png"); 
 	
 	load_model(&(scene->raptor), "raptor.obj");
     scene->raptor_texture_id = load_texture("raptor.png");
 	
-    scene->material.ambient.red = 1.0;
-    scene->material.ambient.green = 1.0;
-    scene->material.ambient.blue = 1.0;
+    scene->material.ambient.red = 0.0215f;
+    scene->material.ambient.green = 0.1745f;
+    scene->material.ambient.blue =  0.0215;
 
-    scene->material.diffuse.red = 1.0;
-    scene->material.diffuse.green = 1.0;
-    scene->material.diffuse.blue = 1.0;
+    scene->material.diffuse.red = 0.07568f;
+    scene->material.diffuse.green = 0.61424f;
+    scene->material.diffuse.blue = 0.07568f;
 
-    scene->material.specular.red = 1.0;
-    scene->material.specular.green = 1.0;
-    scene->material.specular.blue = 1.0;
+    scene->material.specular.red = 0.633f;
+    scene->material.specular.green = 0.727811f;
+    scene->material.specular.blue = 0.633f;
 
-    scene->material.shininess = 0.0;
+    scene->material.shininess = 76.8;
 }
 
 void update_scene(Scene* scene, double time){
@@ -41,9 +41,9 @@ void update_scene(Scene* scene, double time){
 
 void set_lighting()
 {
-    float ambient_light[] = { 0.2f, 0.2f, 0.2f, 1.0f };
+    float ambient_light[] = { 0.9f, 0.9f, 0.9f, 1.0f };
     float diffuse_light[] = { 0.9f, 0.9f, 0.9, 1.0f };
-    float specular_light[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+    float specular_light[] = { 0.9f, 0.9f, 0.9f, 1.0f };
     float position[] = { 0.0f, 0.0f, 10.0f, 1.0f };
 
     glLightfv(GL_LIGHT0, GL_AMBIENT, ambient_light);
@@ -89,11 +89,12 @@ void draw_scene(const Scene* scene)
 	
 	glPushMatrix();
 	glBindTexture(GL_TEXTURE_2D, scene->hare_texture_id);
-	glTranslatef(2,0,0);
-	glScalef(0.2,0.2,0.2);
+	//glTranslatef(0,0,0);
+	//glRotatef(90,1,0,0);
+	//glScalef(1,1,1);
 	draw_model(&(scene->hare));
 	glPopMatrix();
-	
+	/*
 	glPushMatrix();
 	glBindTexture(GL_TEXTURE_2D, scene->raptor_texture_id);
 	draw_model(&(scene->raptor));
@@ -118,7 +119,7 @@ void draw_scene(const Scene* scene)
 	
 	glEnd();
 	glPopMatrix();
-
+	*/
 }
 
 void draw_origin()

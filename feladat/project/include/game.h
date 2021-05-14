@@ -10,7 +10,7 @@
 typedef struct Game
 {
 	
-	//could set these two into two "classes", SetHexa and CurrentHexa, hope it's not a problem
+	//could split these two into two "classes", SetHexa and CurrentHexa
 	int SetHexaCounter;
     float SetHexaCoords[100][2];
 	float SetHexaTypes[100][6];
@@ -20,6 +20,16 @@ typedef struct Game
 	float CurrentHexaY;
 	float validSurround[6];
 } Game;
+
+/**
+ * Draws tile on parameter position
+ */
+void drawTile(float x, float y);
+
+/**
+ *Draws type on centre
+ */
+void drawType(int type)
 
 /**
  * Returns the index of the closest hexa tile to the mouse
