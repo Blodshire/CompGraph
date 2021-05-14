@@ -227,7 +227,7 @@ void drawTile(Game* game) {
     float x=game->CurrentHexaX;
     float y=game->CurrentHexaY;
 
-    GlTranslatef(x,y,0);
+    //GlTranslatef(x,y,0);
 
     draw_hexas(0,0);
 

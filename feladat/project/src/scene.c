@@ -104,6 +104,8 @@ void draw_scene(const Scene* scene)
 	float step_y = 1.5*2;
 	float step_x = sqrt(3)*2;
 	draw_hexas(0.25*step_x,0.5*step_y);
+	glBindTexture(GL_TEXTURE_2D, scene->raptor_texture_id);
+	draw_model(&(scene->raptor));
 	/*
 	float i;
 	float k;
