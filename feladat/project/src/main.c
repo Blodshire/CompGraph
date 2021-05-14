@@ -1,5 +1,6 @@
 #include "callbacks.h"
 #include "init.h"
+#include <time.h>
 
 #include <GL/glut.h>
 
@@ -24,6 +25,7 @@ void set_callbacks()
  */
 int main(int argc, char* argv[])
 {
+	srand(time(0));
     int window;
 
     glutInit(&argc, argv);

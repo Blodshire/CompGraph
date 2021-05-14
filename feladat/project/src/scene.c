@@ -19,23 +19,23 @@ void init_scene(Scene* scene)
     /*
     load_model(&(scene->hare), "hare.obj");
     scene->hare_texture_id = load_texture("hare.jpg");
-
+ */
     load_model(&(scene->raptor), "raptor.obj");
     scene->raptor_texture_id = load_texture("raptor.png");
-    */
-    scene->material.ambient.red = 1.0;
-    scene->material.ambient.green = 1.0;
-    scene->material.ambient.blue = 1.0;
+   
+    scene->material_0.ambient.red = 1.0;
+    scene->material_0.ambient.green = 1.0;
+    scene->material_0.ambient.blue = 1.0;
 
-    scene->material.diffuse.red = 1.0;
-    scene->material.diffuse.green = 1.0;
-    scene->material.diffuse.blue = 1.0;
+    scene->material_0.diffuse.red = 1.0;
+    scene->material_0.diffuse.green = 1.0;
+    scene->material_0.diffuse.blue = 1.0;
 
-    scene->material.specular.red = 0.0;
-    scene->material.specular.green = 0.0;
-    scene->material.specular.blue = 0.0;
+    scene->material_0.specular.red = 0.0;
+    scene->material_0.specular.green = 0.0;
+    scene->material_0.specular.blue = 0.0;
 
-    scene->material.shininess = 0.0;
+    scene->material_0.shininess = 0.0;
 	
 
 }
@@ -90,14 +90,13 @@ void set_material(const Material* material)
 
 void draw_scene(const Scene* scene)
 {
-	float[100][100] HexCentres;
+	
 	
 
     //draw_origin();
-	 draw_hexas(0,0);
-	 float[0][0]=0;
+	draw_hexas(0,0);
 
-    //set_material(&(scene->material));
+    set_material(&(scene->material_0));
     set_lighting();
 
 	//draw grid
@@ -141,6 +140,7 @@ void draw_hexas(float x, float y){
 	
 	float i;
 	glPushMatrix();
+	glColor3f(0, 1, 0);
 	glTranslatef(x,y,0);
 	
 	//1
@@ -149,7 +149,7 @@ void draw_hexas(float x, float y){
 	glTranslatef(sqrt(3)/2*2, 0, 0);
 	
 	glBegin(GL_LINES);
-    glColor3f(0, 1, 0);
+    
     for (i = 0; i < 6; ++i) {
         glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
         glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
@@ -163,7 +163,6 @@ void draw_hexas(float x, float y){
 	glTranslatef(sqrt(3)/2, 1.5, 0);
 	
 	glBegin(GL_LINES);
-    glColor3f(1, 1, 1);
     for (i = 0; i < 6; ++i) {
         glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
         glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
@@ -177,7 +176,6 @@ void draw_hexas(float x, float y){
 	glTranslatef(-sqrt(3)/2, 1.5, 0);
 	
 	glBegin(GL_LINES);
-    glColor3f(1, 1, 1);
     for (i = 0; i < 6; ++i) {
         glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
         glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
@@ -191,7 +189,6 @@ void draw_hexas(float x, float y){
 	glTranslatef(-sqrt(3)/2*2, 0, 0);
 	
 	glBegin(GL_LINES);
-    glColor3f(0, 0, 1);
     for (i = 0; i < 6; ++i) {
         glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
         glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
@@ -205,7 +202,6 @@ void draw_hexas(float x, float y){
 	glTranslatef(-sqrt(3)/2, -1.5, 0);
 	
 	glBegin(GL_LINES);
-    glColor3f(1, 1, 1);
     for (i = 0; i < 6; ++i) {
         glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
         glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);
@@ -213,13 +209,11 @@ void draw_hexas(float x, float y){
     glEnd();
 	glPopMatrix();
 	
-	//6
 	glPushMatrix();
 	
 	glTranslatef(sqrt(3)/2, -1.5, 0);
 
 	glBegin(GL_LINES);
-    glColor3f(1, 1, 1);
     for (i = 0; i < 6; ++i) {
         glVertex3f(sin((i-1)/6.0*2*M_PI), cos((i-1)/6.0*2*M_PI), 0);
         glVertex3f(sin(i/6.0*2*M_PI), cos(i/6.0*2*M_PI), 0);

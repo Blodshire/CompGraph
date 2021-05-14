@@ -9,8 +9,12 @@
 typedef struct Scene
 {
     Model raptor;
-	Model hare;
-    Material material;
+    Material material_0;
+	Material material_1;
+	Material material_2;
+	Material material_3;
+	Material material_4;
+	Material material_5;
     GLuint hare_texture_id;
 	GLuint raptor_texture_id;
 	double w;

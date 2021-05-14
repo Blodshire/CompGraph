@@ -24,46 +24,46 @@ typedef struct Game
 /**
  * Draws tile on parameter position
  */
-void drawTile(float x, float y);
+void drawTile(Game* game);
 
 /**
  *Draws type on centre
  */
-void drawType(int type)
+void drawType(int type);
 
 /**
  * Returns the index of the closest hexa tile to the mouse
  */
-int getClosest(float x, float y);
+int getClosest(Game* game, float x, float y);
 
  /**
  * Returns a tile's surrounding tiles coordinates
  */
-void getRangeCoordinates(int indexOfHexa);
+void getRangeCoordinates(Game* game, int indexOfHexa);
 
  /**
  * Checks if mouse is in a tile's surrounding tiles
  */
-void checkMouseValidRange(float x, float y, float ClosestHexaSurround[10][6]);
+void checkMouseValidRange(Game* game, float x, float y);
 
 /**
  * Rotates active Hexa tile
  */
-void rotateCurrentHexa(float CurrentHexaTypes[6]);
+void rotateCurrentHexa(Game* game);
  
  /**
  * Modifies an array based on surrounding tiles validity
  */
-void checkForValidSurround(float x, float y);
+void checkForValidSurround(Game* game);
 
  /**
  * Checks valid surrounding tiles adjacency, if adjacency is correct, sets tile
  */
-void checkAndSetTile();
+void checkAndSetTile(Game* game);
 
  /**
  * Randomizes current Tile's adjacency values
  */
-void randomizeTile();
+void randomizeTile(Game* game);
 
 #endif /* GAME_H */
